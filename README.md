@@ -76,3 +76,37 @@ This is a social media web application built with React. It utilizes the JSONPla
 - Make sure to install react-query and react-hook-form`:
    ```bash
     npm install @tanstack/react-query react-hook-form
+
+ ## Step 2: Set Up API Functions    
+ - Create an api.js file in the src/ directory to handle API calls:
+  ```bash
+  // src/api.js
+import axios from 'axios';
+
+const BASE_URL = 'https://jsonplaceholder.typicode.com';
+
+export const fetchUserPosts = async (userId) => {
+  const response = await axios.get(`${BASE_URL}/posts?userId=${userId}`);
+  return response.data;
+};
+
+export const fetchPost = async (postId) => {
+  const response = await axios.get(`${BASE_URL}/posts/${postId}`);
+  return response.data;
+};
+
+export const fetchComments = async (postId) => {
+  const response = await axios.get(`${BASE_URL}/comments?postId=${postId}`);
+  return response.data;
+};
+
+export const addComment = async (postId, comment) => {
+  const response = await axios.post(`${BASE_URL}/comments`, { postId, ...comment });
+  return response.data;
+};
+
+export const deleteComment = async (commentId) => {
+  await axios.delete(`${BASE_URL}/comments/${commentId}`);
+};
+
+
