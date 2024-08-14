@@ -90,7 +90,7 @@ Users:
 
 - Create an api.js file in the src/ directory to handle API calls:
 
-```bash
+``bash
 // src/api.js
 import axios from 'axios';
 
@@ -118,7 +118,7 @@ return response.data;
 
 export const deleteComment = async (commentId) => {
 await axios.delete(`${BASE_URL}/comments/${commentId}`);
-};```
+};
 
 ## Step 3: Implement React Query Hooks
 
@@ -149,9 +149,9 @@ return (
 };
 
 export default Feed;
+```
 
 
-Also
 
 ```bash
 // src/components/Post.js
@@ -196,6 +196,25 @@ return (
 };
 
 export default Post;
+```
+
+## Step 4: Handling State and Navigation
+- Ensure that your application properly manages user state and navigation between pages. For example, manage user login state in a context provider and ensure pages are accessible only if the user is logged in.
+
+# Code Structure
+- `src`/: Contains all source code files.
+
+  - `components`/: React components for different pages and functionalities.
+   - `Feed.js`: Displays posts from the logged-in user.
+   -   `Profile.js`: Displays and updates user profile information.
+   -   `Post.js`: Displays a single post with comments. 
+
+  - `api.js`: Contains API functions for fetching and mutating data.
+  - `context/`: Context providers for managing global state.
+  - `App.js`: Main application component.
+  - `index.js`: Entry point of the application.
+  - `styles/`: CSS files for styling the application.
+
+# Error Handling
 
 
-````
