@@ -225,6 +225,6 @@ export default Post;
 
 
 
-*** This README.md file includes detailed setup instructions, API integration, and code structure, formatted in Markdown for use on GitHub or other platforms. Adjust any placeholders and specific details as needed. ***
+` This README.md file includes detailed setup instructions, API integration, and code structure, formatted in Markdown for use on GitHub or other platforms. Adjust any placeholders and specific details as needed. `
 
 
