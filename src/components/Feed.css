@@ -1,0 +1,23 @@
+.feed-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .feed-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .feed-item {
+    margin-bottom: 10px;
+  }
+  
+  .feed-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .feed-link:hover {
+    text-decoration: underline;
+  }
+  

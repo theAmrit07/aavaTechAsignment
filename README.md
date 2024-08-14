@@ -1,98 +1,94 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# Social Media App
+# Social Media Web Application
 
 ## Overview
 
-This is a social media application built with React. It includes features such as user login, viewing posts, managing profiles, and commenting on posts.
+This is a social media web application built with React. It utilizes the JSONPlaceholder API for dummy data and includes features such as user login, profile management, posts, comments, and viewing other user profiles.
 
 ## Features
 
-- User login
-- Feed of posts
-- View and comment on posts
-- User profiles
-- Profile update (if required)
+- **User Login**: Mock login feature using user ID.
+- **Feed Page**: Displays posts from the logged-in user.
+- **Profile Page**: Allows users to view and update their profile information.
+- **Comments**: Users can view, add, and delete comments on posts.
+- **User Profiles**: Users can view other user profiles by clicking on their names.
+- **Post Management**: Users can create, update, and delete their posts.
 
-## Setup
+## Tech Stack
 
-1. Clone the repository:
+- **Frontend**: React
+- **API**: JSONPlaceholder API
+- **State Management**: React Query for data fetching and caching
+- **Form Handling**: React Hook Form
+
+## Installation
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm or yarn
+
+### Steps to Set Up the Project
+
+1. **Clone the Repository**
+
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/your-username/social-media-app.git
+   cd social-media-app
+Install Dependencies
 
-2. Navigate to the project directory:
-cd social-media-app
+bash
+Copy code
+npm install
+# or
+yarn install
+Start the Development Server
 
+bash
+Copy code
+npm start
+# or
+yarn start
+The application will be running at http://localhost:3000.
 
-By following these steps, you will ensure that this app is not only functional but also robust, user-friendly, and well-documented.
-
-# aavaTechAsignment
+Usage
+User Login
+Navigate to the login page.
+Enter a user ID (e.g., 1) to log in.
+Access all pages and functionalities as the logged-in user.
+Viewing Posts
+After logging in, navigate to the feed page.
+Posts specific to the logged-in user will be displayed.
+Profile Management
+Go to the profile page.
+Update your profile information as needed.
+Adding and Deleting Comments
+On the post detail page, add comments using the provided textarea.
+Comments will appear immediately after being added.
+To delete a comment, click the "Delete" button next to it.
+Viewing Other User Profiles
+In the feed or post detail pages, click on the user name to view their profile.
+Creating, Updating, and Deleting Posts
+Use the feed page to create new posts.
+Existing posts can be updated or deleted directly from the feed.
+API Integration
+Endpoints Used
+Posts: https://jsonplaceholder.typicode.com/posts
+Comments: https://jsonplaceholder.typicode.com/comments
+Users: https://jsonplaceholder.typicode.com/users
+API Functions
+fetchUserPosts(userId): Fetches posts for a specific user.
+fetchPost(postId): Fetches a single post by ID.
+fetchComments(postId): Fetches comments for a specific post.
+addComment(postId, comment): Adds a new comment to a post.
+deleteComment(commentId): Deletes a comment.
+Code Structure
+src/: Contains all source code files.
+components/: React components for different pages and functionalities.
+api.js: API functions for fetching and mutating data.
+context/: Context providers for managing global state.
+App.js: Main application component.
+index.js: Entry point of the application.
+styles/: CSS files for styling the application.
+Error Handling
+Network Errors: Display user-friendly messages when network requests fail.
+Empty States: Inform users when there are no posts or comments.
