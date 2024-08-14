@@ -39,7 +39,8 @@ This is a social media web application built with React. It utilizes the JSONPla
 
    ```bash
    npm install
-# or
+or
+```bash
    yarn install
 
 3. **Start the Dev Server**
@@ -51,13 +52,13 @@ This is a social media web application built with React. It utilizes the JSONPla
 ## API Integration
    # End Points Used
    Posts:
-   ```bash
+    
     https://jsonplaceholder.typicode.com/posts
    Comments:
-   ```bash
+    
     https://jsonplaceholder.typicode.com/comments
    Users:
-   ```bash 
+   
     https://jsonplaceholder.typicode.com/users
 
    # API Functions
