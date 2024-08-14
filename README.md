@@ -32,16 +32,14 @@ This is a social media web application built with React. It utilizes the JSONPla
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/social-media-app.git
-   cd social-media-app
+   git clone https://github.com/theAmrit07/aavaTechAsignment.git
+    
 
 2. **Install Dependencies**
 
    ```bash
    npm install
-or
-```bash
-   yarn install
+ 
 
 3. **Start the Dev Server**
    ```bash
