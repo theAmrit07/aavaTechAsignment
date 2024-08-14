@@ -44,11 +44,10 @@ This is a social media web application built with React. It utilizes the JSONPla
 3. **Start the Dev Server**
    ```bash
    npm start
-# or
-   yarn start
+ 
 
-## API Integration
-   # End Points Used
+# API Integration
+   ## End Points Used
    Posts:
     
     https://jsonplaceholder.typicode.com/posts
@@ -60,8 +59,13 @@ This is a social media web application built with React. It utilizes the JSONPla
     https://jsonplaceholder.typicode.com/users
 
    # API Functions
-fetchUserPosts(userId): Fetches posts for a specific user.
-fetchPost(postId): Fetches a single post by ID.
-fetchComments(postId): Fetches comments for a specific post.
-addComment(postId, comment): Adds a new comment to a post.
-deleteComment(commentId): Deletes a comment. 
+
+- `fetchUserPosts(userId)`: Fetches posts for a specific user.
+
+- `fetchPost(postId)`: Fetches a single post by ID.
+
+- `fetchComments(postId)`: Fetches comments for a specific post.
+
+- `addComment(postId, comment)`: Adds a new comment to a post.
+
+- `deleteComment(commentId)`: Deletes a comment. 
