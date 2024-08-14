@@ -33,32 +33,39 @@ This is a social media web application built with React. It utilizes the JSONPla
 
    ```bash
    git clone https://github.com/theAmrit07/aavaTechAsignment.git
-    
+
+
+   ```
 
 2. **Install Dependencies**
 
    ```bash
    npm install
- 
+
+   ```
 
 3. **Start the Dev Server**
    ```bash
    npm start
- 
+   ```
 
 # API Integration
-   ## End Points Used
-   Posts:
-    
+
+## End Points Used
+
+Posts:
+
     https://jsonplaceholder.typicode.com/posts
-   Comments:
-    
+
+Comments:
+
     https://jsonplaceholder.typicode.com/comments
-   Users:
-   
+
+Users:
+
     https://jsonplaceholder.typicode.com/users
 
-   ## API Functions
+## API Functions
 
 - `fetchUserPosts(userId)`: Fetches posts for a specific user.
 
@@ -68,49 +75,55 @@ This is a social media web application built with React. It utilizes the JSONPla
 
 - `addComment(postId, comment)`: Adds a new comment to a post.
 
-- `deleteComment(commentId)`: Deletes a comment. 
-
+- `deleteComment(commentId)`: Deletes a comment.
 
 # Detailed Steps for API Integration
- ## Step 1: Install Required Packages
-- Make sure to install react-query and react-hook-form:
-   ```bash
-    npm install @tanstack/react-query react-hook-form
 
- ## Step 2: Set Up API Functions    
- - Create an api.js file in the src/ directory to handle API calls:
+## Step 1: Install Required Packages
+
+- Make sure to install react-query and react-hook-form:
   ```bash
-  // src/api.js
+   npm install @tanstack/react-query react-hook-form
+  ```
+
+## Step 2: Set Up API Functions
+
+- Create an api.js file in the src/ directory to handle API calls:
+
+```bash
+// src/api.js
 import axios from 'axios';
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 export const fetchUserPosts = async (userId) => {
-  const response = await axios.get(`${BASE_URL}/posts?userId=${userId}`);
-  return response.data;
+const response = await axios.get(`${BASE_URL}/posts?userId=${userId}`);
+return response.data;
 };
 
 export const fetchPost = async (postId) => {
-  const response = await axios.get(`${BASE_URL}/posts/${postId}`);
-  return response.data;
+const response = await axios.get(`${BASE_URL}/posts/${postId}`);
+return response.data;
 };
 
 export const fetchComments = async (postId) => {
-  const response = await axios.get(`${BASE_URL}/comments?postId=${postId}`);
-  return response.data;
+const response = await axios.get(`${BASE_URL}/comments?postId=${postId}`);
+return response.data;
 };
 
 export const addComment = async (postId, comment) => {
-  const response = await axios.post(`${BASE_URL}/comments`, { postId, ...comment });
-  return response.data;
+const response = await axios.post(`${BASE_URL}/comments`, { postId, ...comment });
+return response.data;
 };
 
 export const deleteComment = async (commentId) => {
-  await axios.delete(`${BASE_URL}/comments/${commentId}`);
-};
+await axios.delete(`${BASE_URL}/comments/${commentId}`);
+};```
 
 ## Step 3: Implement React Query Hooks
+
 - Use React Query hooks in your components:
+
 ```bash
 // src/components/Feed.js
 import React from 'react';
@@ -118,24 +131,27 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchUserPosts } from '../api';
 
 const Feed = ({ userId }) => {
-  const { data: posts, isLoading, error } = useQuery(['userPosts', userId], () => fetchUserPosts(userId));
+const { data: posts, isLoading, error } = useQuery(['userPosts', userId], () => fetchUserPosts(userId));
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading posts</div>;
+if (isLoading) return <div>Loading...</div>;
+if (error) return <div>Error loading posts</div>;
 
-  return (
-    <div>
-      {posts.map(post => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </div>
-      ))}
-    </div>
-  );
+return (
+  <div>
+    {posts.map(post => (
+      <div key={post.id}>
+        <h2>{post.title}</h2>
+        <p>{post.body}</p>
+      </div>
+    ))}
+  </div>
+);
 };
 
 export default Feed;
+
+
+Also
 
 ```bash
 // src/components/Post.js
@@ -145,40 +161,41 @@ import { addComment, fetchComments, deleteComment } from '../api';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 const Post = ({ postId }) => {
-  const queryClient = useQueryClient();
-  const { data: comments, isLoading, error } = useQuery(['comments', postId], () => fetchComments(postId));
-  const { register, handleSubmit, reset } = useForm();
-  const mutation = useMutation(comment => addComment(postId, comment), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['comments', postId]);
-      reset();
-    }
-  });
-
-  const handleDelete = async (commentId) => {
-    await deleteComment(commentId);
+const queryClient = useQueryClient();
+const { data: comments, isLoading, error } = useQuery(['comments', postId], () => fetchComments(postId));
+const { register, handleSubmit, reset } = useForm();
+const mutation = useMutation(comment => addComment(postId, comment), {
+  onSuccess: () => {
     queryClient.invalidateQueries(['comments', postId]);
-  };
+    reset();
+  }
+});
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading comments</div>;
+const handleDelete = async (commentId) => {
+  await deleteComment(commentId);
+  queryClient.invalidateQueries(['comments', postId]);
+};
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit(mutation.mutate)}>
-        <textarea {...register('body', { required: true })}></textarea>
-        <button type="submit">Add Comment</button>
-      </form>
-      {comments.map(comment => (
-        <div key={comment.id}>
-          <p>{comment.body}</p>
-          <button onClick={() => handleDelete(comment.id)}>Delete</button>
-        </div>
-      ))}
-    </div>
-  );
+if (isLoading) return <div>Loading...</div>;
+if (error) return <div>Error loading comments</div>;
+
+return (
+  <div>
+    <form onSubmit={handleSubmit(mutation.mutate)}>
+      <textarea {...register('body', { required: true })}></textarea>
+      <button type="submit">Add Comment</button>
+    </form>
+    {comments.map(comment => (
+      <div key={comment.id}>
+        <p>{comment.body}</p>
+        <button onClick={() => handleDelete(comment.id)}>Delete</button>
+      </div>
+    ))}
+  </div>
+);
 };
 
 export default Post;
 
 
+````
