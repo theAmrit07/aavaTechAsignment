@@ -34,61 +34,35 @@ This is a social media web application built with React. It utilizes the JSONPla
    ```bash
    git clone https://github.com/your-username/social-media-app.git
    cd social-media-app
-Install Dependencies
 
-bash
-Copy code
-npm install
+2. **Install Dependencies**
+
+   ```bash
+   npm install
 # or
-yarn install
-Start the Development Server
+   yarn install
 
-bash
-Copy code
-npm start
+3. **Start the Dev Server**
+   ```bash
+   npm start
 # or
-yarn start
-The application will be running at http://localhost:3000.
+   yarn start
 
-Usage
-User Login
-Navigate to the login page.
-Enter a user ID (e.g., 1) to log in.
-Access all pages and functionalities as the logged-in user.
-Viewing Posts
-After logging in, navigate to the feed page.
-Posts specific to the logged-in user will be displayed.
-Profile Management
-Go to the profile page.
-Update your profile information as needed.
-Adding and Deleting Comments
-On the post detail page, add comments using the provided textarea.
-Comments will appear immediately after being added.
-To delete a comment, click the "Delete" button next to it.
-Viewing Other User Profiles
-In the feed or post detail pages, click on the user name to view their profile.
-Creating, Updating, and Deleting Posts
-Use the feed page to create new posts.
-Existing posts can be updated or deleted directly from the feed.
-API Integration
-Endpoints Used
-Posts: https://jsonplaceholder.typicode.com/posts
-Comments: https://jsonplaceholder.typicode.com/comments
-Users: https://jsonplaceholder.typicode.com/users
-API Functions
+## API Integration
+   # End Points Used
+   Posts:
+   ```bash
+    https://jsonplaceholder.typicode.com/posts
+   Comments:
+   ```bash
+    https://jsonplaceholder.typicode.com/comments
+   Users:
+   ```bash 
+    https://jsonplaceholder.typicode.com/users
+
+   # API Functions
 fetchUserPosts(userId): Fetches posts for a specific user.
 fetchPost(postId): Fetches a single post by ID.
 fetchComments(postId): Fetches comments for a specific post.
 addComment(postId, comment): Adds a new comment to a post.
-deleteComment(commentId): Deletes a comment.
-Code Structure
-src/: Contains all source code files.
-components/: React components for different pages and functionalities.
-api.js: API functions for fetching and mutating data.
-context/: Context providers for managing global state.
-App.js: Main application component.
-index.js: Entry point of the application.
-styles/: CSS files for styling the application.
-Error Handling
-Network Errors: Display user-friendly messages when network requests fail.
-Empty States: Inform users when there are no posts or comments.
+deleteComment(commentId): Deletes a comment. 
