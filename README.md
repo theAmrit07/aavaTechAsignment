@@ -90,7 +90,7 @@ Users:
 
 - Create an api.js file in the src/ directory to handle API calls:
 
-``bash
+```bash
 // src/api.js
 import axios from 'axios';
 
@@ -119,6 +119,7 @@ return response.data;
 export const deleteComment = async (commentId) => {
 await axios.delete(`${BASE_URL}/comments/${commentId}`);
 };
+```
 
 ## Step 3: Implement React Query Hooks
 
@@ -216,5 +217,14 @@ export default Post;
   - `styles/`: CSS files for styling the application.
 
 # Error Handling
+
+- `Network Errors`: Display user-friendly messages when network requests fail.
+
+- `Empty States`: Inform users when there are no posts or comments.
+
+
+
+
+This README.md file includes detailed setup instructions, API integration, and code structure, formatted in Markdown for use on GitHub or other platforms. Adjust any placeholders and specific details as needed.
 
 
