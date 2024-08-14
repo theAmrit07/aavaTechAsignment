@@ -58,7 +58,7 @@ This is a social media web application built with React. It utilizes the JSONPla
    
     https://jsonplaceholder.typicode.com/users
 
-   # API Functions
+   ## API Functions
 
 - `fetchUserPosts(userId)`: Fetches posts for a specific user.
 
@@ -69,3 +69,10 @@ This is a social media web application built with React. It utilizes the JSONPla
 - `addComment(postId, comment)`: Adds a new comment to a post.
 
 - `deleteComment(commentId)`: Deletes a comment. 
+
+
+# Detailed Steps for API Integration
+ ## Step 1: Install Required Packages
+- Make sure to install react-query and react-hook-form`:
+   ```bash
+    npm install @tanstack/react-query react-hook-form
