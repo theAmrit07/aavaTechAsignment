@@ -73,7 +73,7 @@ This is a social media web application built with React. It utilizes the JSONPla
 
 # Detailed Steps for API Integration
  ## Step 1: Install Required Packages
-- Make sure to install react-query and react-hook-form`:
+- Make sure to install react-query and react-hook-form:
    ```bash
     npm install @tanstack/react-query react-hook-form
 
@@ -108,5 +108,77 @@ export const addComment = async (postId, comment) => {
 export const deleteComment = async (commentId) => {
   await axios.delete(`${BASE_URL}/comments/${commentId}`);
 };
+
+## Step 3: Implement React Query Hooks
+- Use React Query hooks in your components:
+```bash
+// src/components/Feed.js
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchUserPosts } from '../api';
+
+const Feed = ({ userId }) => {
+  const { data: posts, isLoading, error } = useQuery(['userPosts', userId], () => fetchUserPosts(userId));
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading posts</div>;
+
+  return (
+    <div>
+      {posts.map(post => (
+        <div key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Feed;
+
+```bash
+// src/components/Post.js
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { addComment, fetchComments, deleteComment } from '../api';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+const Post = ({ postId }) => {
+  const queryClient = useQueryClient();
+  const { data: comments, isLoading, error } = useQuery(['comments', postId], () => fetchComments(postId));
+  const { register, handleSubmit, reset } = useForm();
+  const mutation = useMutation(comment => addComment(postId, comment), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['comments', postId]);
+      reset();
+    }
+  });
+
+  const handleDelete = async (commentId) => {
+    await deleteComment(commentId);
+    queryClient.invalidateQueries(['comments', postId]);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading comments</div>;
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(mutation.mutate)}>
+        <textarea {...register('body', { required: true })}></textarea>
+        <button type="submit">Add Comment</button>
+      </form>
+      {comments.map(comment => (
+        <div key={comment.id}>
+          <p>{comment.body}</p>
+          <button onClick={() => handleDelete(comment.id)}>Delete</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Post;
 
 
